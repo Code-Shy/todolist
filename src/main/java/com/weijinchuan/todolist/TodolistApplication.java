@@ -1,9 +1,11 @@
 package com.weijinchuan.todolist;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan("com.weijinchuan.todolist.dao.mapper")
 public class TodolistApplication {
 
     public static void main(String[] args) {
