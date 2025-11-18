@@ -1,5 +1,7 @@
 package com.weijinchuan.todolist.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -24,5 +26,9 @@ public class UserDO {
 
     /* 创建时间戳 */
     private Long createTime;
+
+    /* 删除标识 */
+    @TableField(fill = FieldFill.INSERT)
+    private Integer delFlag;
 
 }
