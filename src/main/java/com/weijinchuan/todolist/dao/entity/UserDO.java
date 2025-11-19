@@ -3,11 +3,12 @@ package com.weijinchuan.todolist.dao.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.weijinchuan.todolist.common.database.BaseDO;
 import lombok.Data;
 
 @Data
 @TableName("t_user")
-public class UserDO {
+public class UserDO extends BaseDO {
 
     /* 用户ID */
     private Long id;
@@ -23,12 +24,5 @@ public class UserDO {
 
     /* 用户密码 */
     private String password;
-
-    /* 创建时间戳 */
-    private Long createTime;
-
-    /* 删除标识 */
-    @TableField(fill = FieldFill.INSERT)
-    private Integer delFlag;
 
 }

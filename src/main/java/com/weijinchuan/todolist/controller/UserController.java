@@ -5,12 +5,10 @@ import com.weijinchuan.todolist.common.convention.result.Results;
 import com.weijinchuan.todolist.dto.req.UserLoginReqDTO;
 import com.weijinchuan.todolist.dto.req.UserRegisterReqDTO;
 import com.weijinchuan.todolist.dto.resp.UserLoginRespDTO;
+import com.weijinchuan.todolist.dto.resp.UserRespDTO;
 import com.weijinchuan.todolist.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,9 +22,13 @@ public class UserController {
         return Results.success();
     }
 
-
     @PostMapping("/api/todolist/actual/v1/user/login")
     public Result<UserLoginRespDTO> login(@RequestBody UserLoginReqDTO requestParam) {
         return Results.success(userService.login(requestParam));
+    }
+
+    @GetMapping("/api/todolist/actual/v1/user/{username}")
+    public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username) {
+        return Results.success(userService.getUserByUsername(username));
     }
 }

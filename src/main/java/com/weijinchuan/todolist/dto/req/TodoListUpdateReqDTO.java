@@ -3,7 +3,7 @@ package com.weijinchuan.todolist.dto.req;
 import lombok.Data;
 
 @Data
-public class TodoListAddReqDTO {
+public class TodoListUpdateReqDTO {
 
     private String title;
 

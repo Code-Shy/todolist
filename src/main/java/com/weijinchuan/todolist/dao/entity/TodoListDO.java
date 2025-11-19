@@ -1,11 +1,18 @@
 package com.weijinchuan.todolist.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.weijinchuan.todolist.common.database.BaseDO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @TableName("t_todo")
-public class TodoListDO {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class TodoListDO extends BaseDO {
 
     /* todolist ID */
     private Long id;
@@ -15,9 +22,6 @@ public class TodoListDO {
 
     /* 描述 */
     private String description;
-
-    /* 创建时间 */
-    private Long createTime;
 
     /* 修改时间 */
     private Long updateTime;

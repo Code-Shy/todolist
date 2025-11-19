@@ -11,6 +11,7 @@ import com.weijinchuan.todolist.dao.mapper.UserMapper;
 import com.weijinchuan.todolist.dto.req.UserLoginReqDTO;
 import com.weijinchuan.todolist.dto.req.UserRegisterReqDTO;
 import com.weijinchuan.todolist.dto.resp.UserLoginRespDTO;
+import com.weijinchuan.todolist.dto.resp.UserRespDTO;
 import com.weijinchuan.todolist.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RLock;
@@ -90,5 +91,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         userLoginRedisTemplate.expire("login_" + requestParam.getUsername(), 30L, TimeUnit.MINUTES);
 
         return new UserLoginRespDTO(uuid);
+    }
+
+    @Override
+    public UserRespDTO getUserByUsername(String username) {
+        LambdaQueryWrapper<UserDO> queryWrapper = Wrappers.lambdaQuery(UserDO.class)
+                .eq(UserDO::getUsername, username);
+
+        UserDO userDO = baseMapper.selectOne(queryWrapper);
+        UserRespDTO result = new UserRespDTO();
+        BeanUtil.copyProperties(userDO, result);
+        return result;
     }
 }
